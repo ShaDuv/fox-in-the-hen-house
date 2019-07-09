@@ -11,7 +11,7 @@ document.addEventListener('keydown', keyDownHandler);
 document.addEventListener('keyup', keyUpHandler);
 
 window.requestAnimationFrame(loopityLoop);
+drawTheMap();
 
 $(document).ready(function () {
-  drawTheMap();
 });
