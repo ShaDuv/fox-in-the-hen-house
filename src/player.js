@@ -1,11 +1,17 @@
-export class Player {
+import { levelOne } from './main.js';
+
+class Player {
   constructor() {
-    this.x = 0;
-    this.y = 0;
+    this.x = 20;
+    this.y = 20;
     this.up = false;
     this.left = false;
     this.down = false;
     this.right = false;
+    this.tileSize = 20;
+    this.tileX = 1;
+    this.tileY = 1;
+    this.speed = 3;
   }
 
 }
@@ -15,11 +21,11 @@ function drawPlayer() {
   // ctx.beginPath();
   ctx.fillStyle = '#FF0990';
   ctx.fillRect(fox.x, fox.y, 20, 20);
-  // ctx.closePath();
+  // ctx.closePath()
   window.requestAnimationFrame(loopityLoop);
 }
 
-export var fox = new Player;
+const fox = new Player;
 
 export function keyDownHandler(event) {
   if (event.keyCode === 87 || event.keyCode === 38) {
@@ -62,15 +68,42 @@ export function keyUpHandler(event) {
 }
 
 export function loopityLoop() {
-  //if you want diagonals use a switch statement
-  if (fox.up) {
-    fox.y -= 3;
-  } else if (fox.left) {
-    fox.x -= 3;
-  } else if (fox.down) {
-    fox.y += 3;
-  } else if (fox.right) {
-    fox.x += 3;
-  }
+  fox.tileX = Math.floor(fox.x / levelOne.tileSize);
+  fox.tileY = Math.floor(fox.y / levelOne.tileSize);
+  console.log(fox.tileX + ', ' + fox.tileY + ', ' + levelOne.map[(fox.tileY * levelOne.columns + fox.tileX)]);
+
+  let testPosition = Math.floor((fox.x - fox.speed) / levelOne.tileSize);
+  console.log('testPosition: ', testPosition);
+    if (fox.up) {
+      // if you move up 3 pixels will that put you into a tile that contains a 1// look here !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! can't go left at the top!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+      if (Math.floor(levelOne.map[Math.floor((fox.y - fox.speed) / levelOne.tileSize) * levelOne.columns + fox.tileX]) === 0 ) {
+        fox.y -= fox.speed;
+      }
+    } else if (fox.left) {
+      // console.log('this is what you want'); //Math.floor(levelOne.map[testPosition * levelOne.columns + fox.tileX]));
+      if (Math.floor(levelOne.map[Math.floor((fox.y - fox.speed) / levelOne.tileSize) * levelOne.columns + fox.tileX]) === 0 ) {
+      fox.x -= fox.speed;
+    }
+    } else if (fox.down) {
+      if (Math.floor(levelOne.map[Math.floor(((fox.y + levelOne.tileSize) + fox.speed) / levelOne.tileSize) * levelOne.columns + fox.tileX]) === 0 ) {
+      fox.y += fox.speed;
+    }
+    } else if (fox.right) {
+      fox.x += fox.speed;
+    }
+  // else {
+  //   console.log('Only an idiot would think that foxes can walk though non-zero walls Daniel!');
+  // }
   drawPlayer();
 }
+
+function locationToInvade() {
+
+    console.log(fox.tileX + ', ' + fox.tileY + ', ' + levelOne.map[fox.tileY * levelOne.columns + fox.tileY]);
+    if (levelOne.map[fox.tileY * levelOne.columns + fox.tileY] !== 0) {
+      return false;
+    }
+    return true;
+}
+
+// levelOne.map[(fox.tileY * levelOne.columns + fox.tileX)]

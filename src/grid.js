@@ -9,54 +9,35 @@
 
 //the map of spaces using a one dimensional array
 //0's represent movable spaces, and 1's will represent nonmovable spaces.
+export class Level {
+  constructor() {
+    this.map = [];
+    this.columns = 0;
+    this.rows = 0;
+    this.tileSize = 20;
+    }
+    drawTheMap() {
+      console.log('in draw the map');
 
-
-export function drawTheMap() {
-  console.log('in draw the map');
-  const map =
-   [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
-    1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
-    1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
-    1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
-    1,0,0,0,0,0,0,0,0,1,1,0,0,0,0,1,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,1,
-    1,0,0,0,0,0,0,0,1,0,0,1,0,0,1,1,1,0,0,0,1,0,1,0,1,0,1,0,0,0,0,1,
-    1,0,0,0,0,0,0,0,1,0,0,0,0,1,1,0,1,1,0,0,1,0,1,1,1,0,1,0,0,0,0,1,
-    1,0,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,1,0,0,1,0,0,1,0,0,1,0,0,0,0,1,
-    1,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,1,0,0,1,0,0,0,0,0,1,0,0,0,0,1,
-    1,0,0,0,0,0,0,0,1,0,0,1,0,1,0,0,0,1,0,0,1,0,0,0,0,0,1,0,0,0,0,1,
-    1,0,0,0,0,0,0,0,0,1,1,0,0,1,0,0,0,1,0,0,1,0,0,0,0,0,1,0,0,0,0,1,
-    1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
-    1,0,1,0,0,1,1,1,0,0,1,1,0,1,1,0,1,1,1,0,0,0,1,0,0,0,1,1,0,0,1,1,
-    1,0,1,0,1,0,0,0,0,0,1,0,1,0,1,0,1,0,0,0,0,1,1,1,0,0,1,0,1,0,1,1,
-    1,0,1,0,0,1,1,1,0,0,1,0,0,0,1,0,1,1,0,0,1,1,0,1,1,0,1,0,1,0,1,1,
-    1,0,1,0,0,0,0,1,0,0,1,0,0,0,1,0,1,0,0,0,1,0,1,0,1,0,1,0,0,1,1,1,
-    1,0,1,0,1,1,1,0,0,0,1,0,0,0,1,0,1,1,1,0,1,0,0,0,1,0,1,0,0,0,1,1,
-    1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
-
-    let xCoord = 0;
-    let yCoord = 0;
-    const columns = 32; //32 columns in the map array
-    const rows = 18; //18 rows in the map array
-    const tileSize = 20; //each tile will be 20 pixels square
-    let ctx = document.getElementById('map').getContext('2d');
-    for (let i = 0; i < map.length; i++) {
-      if (i % columns !== 0 || i === 0) {
+      let xCoord = 0;
+      let yCoord = 0;
+      let ctx = document.getElementById('map').getContext('2d');
+      for (let i = 0; i < this.map.length; i++) {
         if (i !== 0) {
-        xCoord += tileSize;
-      }
-      } else {
-        xCoord = 0;
-        if (i !== 0){
-          yCoord += tileSize;
+          if (i % this.columns !== 0) {
+            xCoord += this.tileSize;
+          } else {
+            xCoord = 0;
+            yCoord += this.tileSize;
+          }
         }
-      }
-      if (map[i] === 1) {
-        console.log(xCoord + ', ' + yCoord);
-        ctx.fillStyle = '#000';
-        ctx.fillRect(xCoord, yCoord, tileSize, tileSize);
-      } else if (map[i] === 2) {
-        ctx.fillStyle = 'darksalmon';
-        ctx.fillRect(xCoord, yCoord, tileSize, tileSize);
+        if (this.map[i] === 1) {
+          ctx.fillStyle = '#000';
+          ctx.fillRect(xCoord, yCoord, this.tileSize, this.tileSize);
+        } else if (this.map[i] === 2) {
+          ctx.fillStyle = 'darksalmon';
+          ctx.fillRect(xCoord, yCoord, this.tileSize, this.tileSize);
+        }
       }
     }
   }
