@@ -1,6 +1,7 @@
 import { levelOne } from './main.js';
 import { callDrawFarmer } from './farmer.js';
-
+import { isFoxCaught } from './main.js';
+import { isChickenBeingEaten } from './main.js';
 
 class Player {
   constructor() {
@@ -30,7 +31,7 @@ function drawPlayer() {
   window.requestAnimationFrame(loopityLoop);
 }
 
-const fox = new Player();
+export const fox = new Player();
 // fox.x = levelOne.tileSize;
 // fox.y = levelOne.tileSize;
 // fox.tileSize = levelOne.tileSize;
@@ -80,42 +81,40 @@ export function loopityLoop() {
   fox.tileY = Math.floor(fox.y / levelOne.tileSize);
 
 
-  let testPosition = Math.floor((fox.x - fox.speed) / levelOne.tileSize);
+  // console.log(fox.tileY * levelOne.columns + fox.tileX);
 
-    if (fox.up) {
-      // if you move up 3 pixels will that put you into a tile that contains a 1
-      if (Math.floor(levelOne.map[Math.floor((fox.y - fox.speed - (levelOne.tileSize / 2)) / levelOne.tileSize) * levelOne.columns + fox.tileX]) === 0 || Math.floor(levelOne.map[Math.floor((fox.y - fox.speed - (levelOne.tileSize / 2)) / levelOne.tileSize) * levelOne.columns + fox.tileX]) === 'v') {
-        fox.y -= fox.speed;
-      }
-    } else if (fox.left) {
-      // console.log('this is what you want'); //Math.floor(levelOne.map[testPosition * levelOne.columns + fox.tileX]));
-      if (Math.floor(levelOne.map[(fox.tileY * levelOne.columns + Math.floor((fox.x - fox.speed - (levelOne.tileSize / 2)) / levelOne.tileSize))]) === 0 ) {
+  if (fox.up) {
+    // if you move up 3 pixels will that put you into a tile that contains a 1
+    if (Math.floor(levelOne.map[Math.floor((fox.y - fox.speed - (levelOne.tileSize / 2)) / levelOne.tileSize) * levelOne.columns + fox.tileX]) === 0 || levelOne.map[Math.floor((fox.y - fox.speed - (levelOne.tileSize / 2)) / levelOne.tileSize) * levelOne.columns + fox.tileX] === 'v' || levelOne.map[Math.floor((fox.y - fox.speed - (levelOne.tileSize / 2)) / levelOne.tileSize) * levelOne.columns + fox.tileX] === 'c') {
+      fox.y -= fox.speed;
+    }
+  } else if (fox.left) {
+    // console.log('this is what you want'); //Math.floor(levelOne.map[testPosition * levelOne.columns + fox.tileX]));
+    if (Math.floor(levelOne.map[(fox.tileY * levelOne.columns + Math.floor((fox.x - fox.speed - (levelOne.tileSize / 2)) / levelOne.tileSize))]) === 0 || levelOne.map[(fox.tileY * levelOne.columns + Math.floor((fox.x - fox.speed - (levelOne.tileSize / 2)) / levelOne.tileSize))] === 'v' || levelOne.map[(fox.tileY * levelOne.columns + Math.floor((fox.x - fox.speed - (levelOne.tileSize / 2)) / levelOne.tileSize))] === 'c') {
       fox.x -= fox.speed;
     }
-    } else if (fox.down) {
-      if (Math.floor(levelOne.map[Math.floor(((fox.y + (levelOne.tileSize / 2)) + fox.speed) / levelOne.tileSize) * levelOne.columns + fox.tileX]) === 0 ) {
+  } else if (fox.down) {
+    if (Math.floor(levelOne.map[Math.floor(((fox.y + (levelOne.tileSize / 2)) + fox.speed) / levelOne.tileSize) * levelOne.columns + fox.tileX]) === 0 || levelOne.map[Math.floor(((fox.y + (levelOne.tileSize / 2)) + fox.speed) / levelOne.tileSize) * levelOne.columns + fox.tileX] === 'v' || levelOne.map[Math.floor(((fox.y + (levelOne.tileSize / 2)) + fox.speed) / levelOne.tileSize) * levelOne.columns + fox.tileX] === 'c') {
       fox.y += fox.speed;
     }
-    } else if (fox.right) {
-      if (Math.floor(levelOne.map[(fox.tileY * levelOne.columns + Math.floor((fox.x + fox.speed + (levelOne.tileSize / 2)) / levelOne.tileSize))]) === 0 ) {
-        fox.x += fox.speed;
+  } else if (fox.right) {
+    if (Math.floor(levelOne.map[(fox.tileY * levelOne.columns + Math.floor((fox.x + fox.speed + (levelOne.tileSize / 2)) / levelOne.tileSize))]) === 0 || levelOne.map[(fox.tileY * levelOne.columns + Math.floor((fox.x + fox.speed + (levelOne.tileSize / 2)) / levelOne.tileSize))] === 'v' || levelOne.map[(fox.tileY * levelOne.columns + Math.floor((fox.x + fox.speed + (levelOne.tileSize / 2)) / levelOne.tileSize))] === 'c') {
+      fox.x += fox.speed;
     }
-    }
+  }
   // else {
-  //   console.log('Only an idiot would think that foxes can walk though non-zero walls Daniel!');
-  // }
+  //     console.log('Only an idiot would think that foxes can walk though non-zero walls Daniel!');
+  //   }
 
-  drawPlayer();
-  callDrawFarmer();
-}
-
-function locationToInvade() {
-
-    console.log(fox.tileX + ', ' + fox.tileY + ', ' + levelOne.map[fox.tileY * levelOne.columns + fox.tileY]);
-    if (levelOne.map[fox.tileY * levelOne.columns + fox.tileY] !== 0) {
-      return false;
+    if (isFoxCaught() && isChickenBeingEaten()) {
+      drawPlayer();
+      callDrawFarmer();
     }
-    return true;
-}
+  }
 
-// levelOne.map[(fox.tileY * levelOne.columns + fox.tileX)]
+
+
+
+  // levelOne.map[(fox.tileY * levelOne.columns + fox.tileX)]
+
+  // if the fox is caught the else happens
