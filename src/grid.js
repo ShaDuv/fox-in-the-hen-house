@@ -17,7 +17,6 @@ export class Level {
     this.tileSize = 40;
   }
   drawTheMap() {
-    console.log('in draw the map');
     let roofCenterSideways = document.getElementById("roof-center-sideways");
     let roofEdgeUp = document.getElementById("roof-edge-up");
     let roofEdgeDown = document.getElementById("roof-edge-down");
