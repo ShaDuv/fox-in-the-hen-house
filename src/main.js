@@ -132,7 +132,6 @@ export function isFoxCaught() {
 
 }
 export function isChickenBeingEaten() {
-  console.log(!(levelOne.map[fox.tileY * levelOne.columns + fox.tileX] === 'c'));
   if (!(levelOne.map[fox.tileY * levelOne.columns + fox.tileX] === 'c')) {
     return true;
   } else {
