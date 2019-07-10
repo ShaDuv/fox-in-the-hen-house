@@ -5,6 +5,7 @@ import { keyUpHandler } from './player.js';
 import { loopityLoop } from './player.js';
 import { drawTheMap } from './grid.js';
 import { Level } from './grid.js';
+import { callDrawFarmer } from './farmer.js';
 
 export const levelOne = new Level;
   levelOne.map =
@@ -40,7 +41,7 @@ export const levelOne = new Level;
 
     levelOne.columns = 32; //32 columns in the map array
     levelOne.rows = 18; //18 rows in the map array
-    
+
 
 //sound related imports and variables-----------------------------------------
 
