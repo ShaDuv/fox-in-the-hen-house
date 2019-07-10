@@ -38,15 +38,53 @@ function drawFarmer() {
 function farmerVision() {
   const viewRange = 5;
   if (farmer.direction === 'x' && farmer.speed === -2) {
+    // clear all 'v'
+    for (var i = 0; i < levelOne.map.length; i++) {
+      if (levelOne.map[i] === 'v') {
+        levelOne.map[i] = 0;
+      }
+    }
+
+    // farmer
     levelOne.map[farmer.currentTile] = 'v';
-    levelOne.map[farmer.currentTile - 1] = 'v';
-    levelOne.map[farmer.currentTile - 2] = 'v';
-    levelOne.map[farmer.currentTile - 3] = 'v';
-    levelOne.map[farmer.currentTile - 4] = 'v';
-    levelOne.map[farmer.currentTile - 5] = 'v';
+    // farmer line
+    if (levelOne.map[farmer.currentTile - 1] === 0 || levelOne.map[farmer.currentTile - 1] === 'v') {
+      levelOne.map[farmer.currentTile - 1] = 'v';
+      if (levelOne.map[farmer.currentTile - 2] === 0 || levelOne.map[farmer.currentTile - 2] === 'v') {
+        levelOne.map[farmer.currentTile - 2] = 'v';
+        if (levelOne.map[farmer.currentTile - 3] === 0 || levelOne.map[farmer.currentTile - 3] === 'v') {
+          levelOne.map[farmer.currentTile - 3] = 'v';
+          if (levelOne.map[farmer.currentTile - 4] === 0 || levelOne.map[farmer.currentTile - 4] === 'v') {
+            levelOne.map[farmer.currentTile - 4] = 'v';
+          }
+        }
+      }
+    }
+    // farmer peripheral top
+    if (levelOne.map[farmer.currentTile - 34] === 0 || levelOne.map[farmer.currentTile - 34] === 'v') {
+      levelOne.map[farmer.currentTile - 34] = 'v';
+      if (levelOne.map[farmer.currentTile - 35] === 0 || levelOne.map[farmer.currentTile - 35] === 'v') {
+        levelOne.map[farmer.currentTile - 35] = 'v';
+        if (levelOne.map[farmer.currentTile - 36] === 0 || levelOne.map[farmer.currentTile - 36] === 'v') {
+          levelOne.map[farmer.currentTile - 36] = 'v';
+        }
+      }
+    }
+    // farmer peripheral top
+    if (levelOne.map[farmer.currentTile + 30] === 0 || levelOne.map[farmer.currentTile - 30] === 'v') {
+      levelOne.map[farmer.currentTile + 30] = 'v';
+      if (levelOne.map[farmer.currentTile + 29] === 0 || levelOne.map[farmer.currentTile - 29] === 'v') {
+        levelOne.map[farmer.currentTile + 29] = 'v';
+        if (levelOne.map[farmer.currentTile + 28] === 0 || levelOne.map[farmer.currentTile - 28] === 'v') {
+          levelOne.map[farmer.currentTile + 28] = 'v';
+        }
+      }
+    }
     levelOne.drawTheMap();
   }
+
 }
+
 
 
 export function callDrawFarmer() {
@@ -79,10 +117,10 @@ export function callDrawFarmer() {
     farmer.speed = 2;
   }
   if (farmer.direction === 'y') {
-  farmer.y += farmer.speed;
-} else if (farmer.direction === 'x') {
-  farmer.x += farmer.speed;
-}
+    farmer.y += farmer.speed;
+  } else if (farmer.direction === 'x') {
+    farmer.x += farmer.speed;
+  }
   farmerVision();
   drawFarmer();
 }
@@ -105,16 +143,16 @@ function farmerLoop() {
 //
 //
 // function ProgressCountdown(timeleft, bar, text) {
-//   return new Promise((resolve, reject) => {
-//     var countdownTimer = setInterval(() => {
-//       timeleft--;
-//
-//
-//
-//       if (timeleft <= 0) {
-//         clearInterval(countdownTimer);
-//         resolve();
-//       }
-//     }, 1000);
-//   });
-// }
+  //   return new Promise((resolve, reject) => {
+    //     var countdownTimer = setInterval(() => {
+      //       timeleft--;
+      //
+      //
+      //
+      //       if (timeleft <= 0) {
+        //         clearInterval(countdownTimer);
+        //         resolve();
+        //       }
+        //     }, 1000);
+        //   });
+        // }
