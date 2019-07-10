@@ -17,7 +17,7 @@ export class Level {
     this.tileSize = 40;
     }
     drawTheMap() {
-      console.log('in draw the map');
+      
 
       let xCoord = 0;
       let yCoord = 0;
