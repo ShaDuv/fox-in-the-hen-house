@@ -4,7 +4,7 @@
   left: 0;
 }
 #game {
-  background-color: #add8e6;
+  background-image: url("./img/background.jpg");
   z-index: 0;
 }
 #map {
