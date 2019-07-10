@@ -1,3 +1,8 @@
+.container canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
 #game {
   background-image: url("./img/background.jpg");
   z-index: 0;
@@ -8,8 +13,6 @@
 #creatures {
   z-index: 2;
 }
-.container canvas {
-  position: absolute;
-  top: 0;
-  left: 0;
+#chicken {
+  z-index: 3;
 }
