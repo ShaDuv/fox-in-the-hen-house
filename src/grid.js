@@ -34,10 +34,18 @@ export class Level {
         if (this.map[i] === 1) {
           ctx.fillStyle = '#000';
           ctx.fillRect(xCoord, yCoord, this.tileSize, this.tileSize);
-        } else if (this.map[i] === 2) {
+        } else if (this.map[i] === 'v') {
+          ctx.fillStyle = 'blue';
+          ctx.fillRect(xCoord, yCoord, this.tileSize, this.tileSize);
+        } else if (this.map[i] !== 0 && this.map[i] !== 1) {
           ctx.fillStyle = 'darksalmon';
           ctx.fillRect(xCoord, yCoord, this.tileSize, this.tileSize);
         }
+        // else if (this.map[i] === 0 && i % 2 === 0) {
+        //     console.log('white');
+        //     ctx.fillStyle = '#fff';
+        //     ctx.fillRect(xCoord + 40, yCoord + 40, this.tileSize, this.tileSize);
+        // }
       }
     }
   }

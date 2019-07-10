@@ -1,4 +1,6 @@
 import { levelOne } from './main.js';
+import { callDrawFarmer } from './farmer.js';
+
 
 class Player {
   constructor() {
@@ -24,6 +26,7 @@ function drawPlayer() {
   ctx.fill()
   // ctx.fillRect(fox.x, fox.y, fox.tileSize, fox.tileSize);
   ctx.closePath()
+
   window.requestAnimationFrame(loopityLoop);
 }
 
@@ -101,7 +104,9 @@ export function loopityLoop() {
   // else {
   //   console.log('Only an idiot would think that foxes can walk though non-zero walls Daniel!');
   // }
+
   drawPlayer();
+  callDrawFarmer();
 }
 
 function locationToInvade() {
