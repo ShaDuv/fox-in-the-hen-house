@@ -16,7 +16,7 @@ The first group project for the intermediate Javascript class at the Epicodus, c
 | click starts game | click | starts the game loop |
 | WASD moves fox | WASD | Fox moves according to keys |
 | If fox enters a "v" tile (farmer's vision field), fox is caught and game is lost | WASD | game over |
-| if the fox enters a "c" tile (the chicken field), chicken is eaten and game is won | WASD | game is won | 
+| if the fox enters a "c" tile (the chicken field), chicken is eaten and game is won | WASD | game is won |
 
 
 ## Setup/Installation Requirements
