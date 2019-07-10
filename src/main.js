@@ -6,6 +6,7 @@ import { loopityLoop } from './player.js';
 import { drawTheMap } from './grid.js';
 import { Level } from './grid.js';
 import { callDrawFarmer } from './farmer.js';
+import { fox } from './player.js';
 
 export const levelOne = new Level;
   levelOne.map =
@@ -92,3 +93,14 @@ setTimeout(function () {
 }, 150);
 
 // });
+
+export function isFoxCaught() {
+  if (!(levelOne.map[fox.tileY * levelOne.columns + fox.tileX] === 'v')) {
+    return true;
+  } else {
+    console.log('The fox has been caught.');
+    farmerYell.play();
+    return false;
+  }
+
+}

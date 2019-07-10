@@ -1,6 +1,6 @@
 import { levelOne } from './main.js';
 import { callDrawFarmer } from './farmer.js';
-
+import { isFoxCaught } from './main.js';
 
 class Player {
   constructor() {
@@ -30,7 +30,7 @@ function drawPlayer() {
   window.requestAnimationFrame(loopityLoop);
 }
 
-const fox = new Player();
+export const fox = new Player();
 // fox.x = levelOne.tileSize;
 // fox.y = levelOne.tileSize;
 // fox.tileSize = levelOne.tileSize;
@@ -102,10 +102,13 @@ export function loopityLoop() {
     }
   }
   // else {
-    //   console.log('Only an idiot would think that foxes can walk though non-zero walls Daniel!');
-    // }
+  //     console.log('Only an idiot would think that foxes can walk though non-zero walls Daniel!');
+  //   }
 
-    isFoxCaught();
+    if (isFoxCaught()) {
+      drawPlayer();
+      callDrawFarmer();
+    }
   }
 
 
@@ -114,12 +117,3 @@ export function loopityLoop() {
   // levelOne.map[(fox.tileY * levelOne.columns + fox.tileX)]
 
   // if the fox is caught the else happens
-  function isFoxCaught() {
-    if (!(levelOne.map[fox.tileY * levelOne.columns + fox.tileX] === 'v')) {
-      drawPlayer();
-      callDrawFarmer();
-    } else {
-      console.log('The fox has been caught.');
-    }
-
-  }
