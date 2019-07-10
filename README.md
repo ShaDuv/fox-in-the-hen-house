@@ -6,14 +6,17 @@ The first group project for the intermediate Javascript class at the Epicodus, c
 
 ## Description
 
- This game is a group project for the coding school, Epicodus. It is the beginning of a stealth game, eventually intended to have the player navigate a fox through a farmyard. The objective is to eat chickens, while avoiding being spotted by the farmer, and eventually (later stretch goals) dogs, and other hazards. 
+ This game is a group project for the coding school, Epicodus. It is the beginning of a stealth game, eventually intended to have the player navigate a fox through a farmyard. The objective is to eat chickens, while avoiding being spotted by the farmer, and eventually (later stretch goals) dogs, and other hazards.
 
 
 ## Specs
 
-|Behavior   |Input      | Output              |
-| --------- | :--------| :-------------|
-
+| Behavior | Input | Output |
+| ------------- |:-------------:| -----:|
+| click starts game | click | starts the game loop |
+| WASD moves fox | WASD | Fox moves according to keys |
+| If fox enters a "v" tile (farmer's vision field), fox is caught and game is lost | WASD | game over |
+| if the fox enters a "c" tile (the chicken field), chicken is eaten and game is won | WASD | game is won | 
 
 
 ## Setup/Installation Requirements
