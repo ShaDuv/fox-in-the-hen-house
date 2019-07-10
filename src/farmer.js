@@ -23,16 +23,16 @@ class Player {
     this.currentTile = (this.tileY * levelOne.columns + this.tileX);
     // farmer going left
     if (this.name === 'farmer') {
-    for (let i = 0; i < levelOne.map.length; i++) {
-      if (levelOne.map[i] === 'v') {
-        levelOne.map[i] = 0;
+      for (let i = 0; i < levelOne.map.length; i++) {
+        if (levelOne.map[i] === 'v') {
+          levelOne.map[i] = 0;
+        }
       }
     }
-  }
     if (levelOne.map[this.currentTile] === 0 || levelOne.map[this.currentTile] === 'v') {
       levelOne.map[this.currentTile] = 'v';
     }
-    if (this.direction === 'x' && this.speed === -2) {
+    if (this.direction === 'x' && this.speed < 0) {
       // if the this is going left
       // clear all 'v'
 
@@ -70,7 +70,7 @@ class Player {
           }
         }
       }
-    } else if (this.direction === 'x' && this.speed === 2) {
+    } else if (this.direction === 'x' && this.speed > 0) {
       // if the this is going right
       // clear all 'v'
 
@@ -108,7 +108,7 @@ class Player {
           }
         }
       }
-    } else if (this.direction === 'y' && this.speed === -2) {
+    } else if (this.direction === 'y' && this.speed < 0) {
       // the this is is going up
       // clear all 'v'
 
@@ -146,7 +146,7 @@ class Player {
           }
         }
       }
-    } else if (this.direction === 'y' && this.speed === 2) {
+    } else if (this.direction === 'y' && this.speed > 0) {
       // the this is is going up
       // clear all 'v'
 
@@ -255,6 +255,7 @@ export function callDrawFarmer() {
   } else if (farmer.direction === 'x') {
     farmer.x += farmer.speed;
   }
+  callDrawDog();
   farmer.farmerVision();
   dog.farmerVision();
   drawFarmer();
@@ -265,32 +266,19 @@ export function callDrawFarmer() {
 export function callDrawDog() {
   dog.tileX = Math.floor(dog.x / levelOne.tileSize);
   dog.tileY = Math.floor(dog.y / levelOne.tileSize);
-  console.log(dog.tileY * levelOne.columns + dog.tileX);
   dog.currentTile = (dog.tileY * levelOne.columns + dog.tileX);
-  if (dog.currentTile === 436) {
-    dog.direction = 'y';
-    dog.speed = -2;
-  } else if (dog.currentTile === 276) {
+  if (dog.currentTile === 250) {
     dog.direction = 'x';
-    dog.speed = -2;
-  } else if (dog.currentTile === 273) {
+    dog.speed = 12;
+  } else if (dog.currentTile === 254) {
     dog.direction = 'y';
-    dog.speed = -2;
-  } else if (dog.currentTile === 81) {
+    dog.speed = 12;
+  } else if (dog.currentTile === 542) {
     dog.direction = 'x';
-    dog.speed = -2;
-  } else if (dog.currentTile === 75) {
+    dog.speed = -12;
+  } else if (dog.currentTile === 538) {
     dog.direction = 'y';
-    dog.speed = 2;
-  } else if (dog.currentTile === 299) {
-    dog.direction = 'x';
-    dog.speed = -2;
-  } else if (dog.currentTile === 294) {
-    dog.direction = 'y';
-    dog.speed = 2;
-  } else if (dog.currentTile === 422) {
-    dog.direction = 'x';
-    dog.speed = 2;
+    dog.speed = -12;
   }
   if (dog.direction === 'y') {
     dog.y += dog.speed;
