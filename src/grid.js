@@ -27,8 +27,6 @@ export class Level {
     let roofRight = document.getElementById("roof-right");
     let pinkTree = document.getElementById("pink-tree");
     let bush = document.getElementById("bush");
-    }
-    drawTheMap() {
 
     let xCoord = 0;
     let yCoord = 0;
