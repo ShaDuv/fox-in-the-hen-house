@@ -12,9 +12,180 @@ class Player {
     this.tileSize = 40;
     this.tileX = 1;
     this.tileY = 1;
-    this.speed = 3;
+    this.speed = 2;
     this.currentTile = 436;
     this.direction = 'y';
+    this.name = 'farmer';
+  }
+  farmerVision() {
+    this.tileX = Math.floor(this.x / levelOne.tileSize);
+    this.tileY = Math.floor(this.y / levelOne.tileSize);
+    this.currentTile = (this.tileY * levelOne.columns + this.tileX);
+    // farmer going left
+    if (this.name === 'farmer') {
+    for (let i = 0; i < levelOne.map.length; i++) {
+      if (levelOne.map[i] === 'v') {
+        levelOne.map[i] = 0;
+      }
+    }
+  }
+    if (levelOne.map[this.currentTile] === 0 || levelOne.map[this.currentTile] === 'v') {
+      levelOne.map[this.currentTile] = 'v';
+    }
+    if (this.direction === 'x' && this.speed === -2) {
+      // if the this is going left
+      // clear all 'v'
+
+      // this
+      // this line
+      if (levelOne.map[this.currentTile - 1] === 0 || levelOne.map[this.currentTile - 1] === 'v') {
+        levelOne.map[this.currentTile - 1] = 'v';
+        if (levelOne.map[this.currentTile - 2] === 0 || levelOne.map[this.currentTile - 2] === 'v') {
+          levelOne.map[this.currentTile - 2] = 'v';
+          if (levelOne.map[this.currentTile - 3] === 0 || levelOne.map[this.currentTile - 3] === 'v') {
+            levelOne.map[this.currentTile - 3] = 'v';
+            if (levelOne.map[this.currentTile - 4] === 0 || levelOne.map[this.currentTile - 4] === 'v') {
+              levelOne.map[this.currentTile - 4] = 'v';
+            }
+          }
+        }
+      }
+      // this peripheral top
+      if (levelOne.map[this.currentTile - 34] === 0 || levelOne.map[this.currentTile - 34] === 'v') {
+        levelOne.map[this.currentTile - 34] = 'v';
+        if (levelOne.map[this.currentTile - 35] === 0 || levelOne.map[this.currentTile - 35] === 'v') {
+          levelOne.map[this.currentTile - 35] = 'v';
+          if (levelOne.map[this.currentTile - 36] === 0 || levelOne.map[this.currentTile - 36] === 'v') {
+            levelOne.map[this.currentTile - 36] = 'v';
+          }
+        }
+      }
+      // this peripheral bottom
+      if (levelOne.map[this.currentTile + 30] === 0 || levelOne.map[this.currentTile + 30] === 'v') {
+        levelOne.map[this.currentTile + 30] = 'v';
+        if (levelOne.map[this.currentTile + 29] === 0 || levelOne.map[this.currentTile + 29] === 'v') {
+          levelOne.map[this.currentTile + 29] = 'v';
+          if (levelOne.map[this.currentTile + 28] === 0 || levelOne.map[this.currentTile + 28] === 'v') {
+            levelOne.map[this.currentTile + 28] = 'v';
+          }
+        }
+      }
+    } else if (this.direction === 'x' && this.speed === 2) {
+      // if the this is going right
+      // clear all 'v'
+
+      // this
+      // this line
+      if (levelOne.map[this.currentTile + 1] === 0 || levelOne.map[this.currentTile + 1] === 'v') {
+        levelOne.map[this.currentTile + 1] = 'v';
+        if (levelOne.map[this.currentTile + 2] === 0 || levelOne.map[this.currentTile + 2] === 'v') {
+          levelOne.map[this.currentTile + 2] = 'v';
+          if (levelOne.map[this.currentTile + 3] === 0 || levelOne.map[this.currentTile + 3] === 'v') {
+            levelOne.map[this.currentTile + 3] = 'v';
+            if (levelOne.map[this.currentTile + 4] === 0 || levelOne.map[this.currentTile + 4] === 'v') {
+              levelOne.map[this.currentTile + 4] = 'v';
+            }
+          }
+        }
+      }
+      // this peripheral bottom
+      if (levelOne.map[this.currentTile + 34] === 0 || levelOne.map[this.currentTile + 34] === 'v') {
+        levelOne.map[this.currentTile + 34] = 'v';
+        if (levelOne.map[this.currentTile + 35] === 0 || levelOne.map[this.currentTile + 35] === 'v') {
+          levelOne.map[this.currentTile + 35] = 'v';
+          if (levelOne.map[this.currentTile + 36] === 0 || levelOne.map[this.currentTile + 36] === 'v') {
+            levelOne.map[this.currentTile + 36] = 'v';
+          }
+        }
+      }
+      //this peripheral top
+      if (levelOne.map[this.currentTile - 30] === 0 || levelOne.map[this.currentTile - 30] === 'v') {
+        levelOne.map[this.currentTile - 30] = 'v';
+        if (levelOne.map[this.currentTile - 29] === 0 || levelOne.map[this.currentTile - 29] === 'v') {
+          levelOne.map[this.currentTile - 29] = 'v';
+          if (levelOne.map[this.currentTile - 28] === 0 || levelOne.map[this.currentTile - 28] === 'v') {
+            levelOne.map[this.currentTile - 28] = 'v';
+          }
+        }
+      }
+    } else if (this.direction === 'y' && this.speed === -2) {
+      // the this is is going up
+      // clear all 'v'
+
+      // this
+      // this line
+      if (levelOne.map[this.currentTile - 32] === 0 || levelOne.map[this.currentTile - 32] === 'v') {
+        levelOne.map[this.currentTile - 32] = 'v';
+        if (levelOne.map[this.currentTile - 64] === 0 || levelOne.map[this.currentTile - 64] === 'v') {
+          levelOne.map[this.currentTile - 64] = 'v';
+          if (levelOne.map[this.currentTile - 96] === 0 || levelOne.map[this.currentTile - 96] === 'v') {
+            levelOne.map[this.currentTile - 96] = 'v';
+            if (levelOne.map[this.currentTile - 128] === 0 || levelOne.map[this.currentTile - 128] === 'v') {
+              levelOne.map[this.currentTile - 128] = 'v';
+            }
+          }
+        }
+      }
+      // this peripheral left
+      if (levelOne.map[this.currentTile - 65] === 0 || levelOne.map[this.currentTile - 65] === 'v') {
+        levelOne.map[this.currentTile - 65] = 'v';
+        if (levelOne.map[this.currentTile - 97] === 0 || levelOne.map[this.currentTile - 97] === 'v') {
+          levelOne.map[this.currentTile - 97] = 'v';
+          if (levelOne.map[this.currentTile - 129] === 0 || levelOne.map[this.currentTile - 129] === 'v') {
+            levelOne.map[this.currentTile - 129] = 'v';
+          }
+        }
+      }
+      // this peripheral bottom
+      if (levelOne.map[this.currentTile - 63] === 0 || levelOne.map[this.currentTile - 63] === 'v') {
+        levelOne.map[this.currentTile - 63] = 'v';
+        if (levelOne.map[this.currentTile - 95] === 0 || levelOne.map[this.currentTile - 95] === 'v') {
+          levelOne.map[this.currentTile - 95] = 'v';
+          if (levelOne.map[this.currentTile - 127] === 0 || levelOne.map[this.currentTile - 127] === 'v') {
+            levelOne.map[this.currentTile - 127] = 'v';
+          }
+        }
+      }
+    } else if (this.direction === 'y' && this.speed === 2) {
+      // the this is is going up
+      // clear all 'v'
+
+      // this
+      // this line
+      if (levelOne.map[this.currentTile + 32] === 0 || levelOne.map[this.currentTile + 32] === 'v') {
+        levelOne.map[this.currentTile + 32] = 'v';
+        if (levelOne.map[this.currentTile + 64] === 0 || levelOne.map[this.currentTile + 64] === 'v') {
+          levelOne.map[this.currentTile + 64] = 'v';
+          if (levelOne.map[this.currentTile + 96] === 0 || levelOne.map[this.currentTile + 96] === 'v') {
+            levelOne.map[this.currentTile + 96] = 'v';
+            if (levelOne.map[this.currentTile + 128] === 0 || levelOne.map[this.currentTile + 128] === 'v') {
+              levelOne.map[this.currentTile + 128] = 'v';
+            }
+          }
+        }
+      }
+      // this peripheral left
+      if (levelOne.map[this.currentTile + 65] === 0 || levelOne.map[this.currentTile + 65] === 'v') {
+        levelOne.map[this.currentTile + 65] = 'v';
+        if (levelOne.map[this.currentTile + 97] === 0 || levelOne.map[this.currentTile + 97] === 'v') {
+          levelOne.map[this.currentTile + 97] = 'v';
+          if (levelOne.map[this.currentTile + 129] === 0 || levelOne.map[this.currentTile + 129] === 'v') {
+            levelOne.map[this.currentTile + 129] = 'v';
+          }
+        }
+      }
+      // this peripheral bottom
+      if (levelOne.map[this.currentTile + 63] === 0 || levelOne.map[this.currentTile + 63] === 'v') {
+        levelOne.map[this.currentTile + 63] = 'v';
+        if (levelOne.map[this.currentTile + 95] === 0 || levelOne.map[this.currentTile + 95] === 'v') {
+          levelOne.map[this.currentTile + 95] = 'v';
+          if (levelOne.map[this.currentTile + 127] === 0 || levelOne.map[this.currentTile + 127] === 'v') {
+            levelOne.map[this.currentTile + 127] = 'v';
+          }
+        }
+      }
+    }
+    levelOne.drawTheMap();
   }
 }
 
@@ -22,6 +193,10 @@ const farmer = new Player;
 farmer.x = 820;
 farmer.y = 540;
 
+const dog = new Player;
+dog.x = 1060;
+dog.y = 300;
+dog.name = 'dog';
 
 function drawFarmer() {
   let ctx = document.getElementById('creatures').getContext('2d');
@@ -33,173 +208,16 @@ function drawFarmer() {
   // ctx.fillRect(fox.x, fox.y, fox.tileSize, fox.tileSize);
   ctx.closePath()
 
+  ctx.beginPath();
+  ctx.fillStyle = 'green';
+  ctx.arc(dog.x, dog.y, dog.tileSize / 2, 0, 2 * Math.PI)
+  ctx.fill()
+  // ctx.fillRect(fox.x, fox.y, fox.tileSize, fox.tileSize);
+  ctx.closePath()
+
 }
 
-function farmerVision() {
-  // farmer going left
-  for (let i = 0; i < levelOne.map.length; i++) {
-    if (levelOne.map[i] === 'v') {
-      levelOne.map[i] = 0;
-    }
-  }
-  if (levelOne.map[farmer.currentTile] === 0 || levelOne.map[farmer.currentTile] === 'v') {
-    levelOne.map[farmer.currentTile] = 'v';
-  }
-  if (farmer.direction === 'x' && farmer.speed === -2) {
-    // if the farmer is going left
-    // clear all 'v'
 
-    // farmer
-    // farmer line
-    if (levelOne.map[farmer.currentTile - 1] === 0 || levelOne.map[farmer.currentTile - 1] === 'v') {
-      levelOne.map[farmer.currentTile - 1] = 'v';
-      if (levelOne.map[farmer.currentTile - 2] === 0 || levelOne.map[farmer.currentTile - 2] === 'v') {
-        levelOne.map[farmer.currentTile - 2] = 'v';
-        if (levelOne.map[farmer.currentTile - 3] === 0 || levelOne.map[farmer.currentTile - 3] === 'v') {
-          levelOne.map[farmer.currentTile - 3] = 'v';
-          if (levelOne.map[farmer.currentTile - 4] === 0 || levelOne.map[farmer.currentTile - 4] === 'v') {
-            levelOne.map[farmer.currentTile - 4] = 'v';
-          }
-        }
-      }
-    }
-    // farmer peripheral top
-    if (levelOne.map[farmer.currentTile - 34] === 0 || levelOne.map[farmer.currentTile - 34] === 'v') {
-      levelOne.map[farmer.currentTile - 34] = 'v';
-      if (levelOne.map[farmer.currentTile - 35] === 0 || levelOne.map[farmer.currentTile - 35] === 'v') {
-        levelOne.map[farmer.currentTile - 35] = 'v';
-        if (levelOne.map[farmer.currentTile - 36] === 0 || levelOne.map[farmer.currentTile - 36] === 'v') {
-          levelOne.map[farmer.currentTile - 36] = 'v';
-        }
-      }
-    }
-    // farmer peripheral bottom
-    if (levelOne.map[farmer.currentTile + 30] === 0 || levelOne.map[farmer.currentTile + 30] === 'v') {
-      levelOne.map[farmer.currentTile + 30] = 'v';
-      if (levelOne.map[farmer.currentTile + 29] === 0 || levelOne.map[farmer.currentTile + 29] === 'v') {
-        levelOne.map[farmer.currentTile + 29] = 'v';
-        if (levelOne.map[farmer.currentTile + 28] === 0 || levelOne.map[farmer.currentTile + 28] === 'v') {
-          levelOne.map[farmer.currentTile + 28] = 'v';
-        }
-      }
-    }
-  } else if (farmer.direction === 'x' && farmer.speed === 2) {
-    // if the farmer is going right
-    // clear all 'v'
-
-    // farmer
-    // farmer line
-    if (levelOne.map[farmer.currentTile + 1] === 0 || levelOne.map[farmer.currentTile + 1] === 'v') {
-      levelOne.map[farmer.currentTile + 1] = 'v';
-      if (levelOne.map[farmer.currentTile + 2] === 0 || levelOne.map[farmer.currentTile + 2] === 'v') {
-        levelOne.map[farmer.currentTile + 2] = 'v';
-        if (levelOne.map[farmer.currentTile + 3] === 0 || levelOne.map[farmer.currentTile + 3] === 'v') {
-          levelOne.map[farmer.currentTile + 3] = 'v';
-          if (levelOne.map[farmer.currentTile + 4] === 0 || levelOne.map[farmer.currentTile + 4] === 'v') {
-            levelOne.map[farmer.currentTile + 4] = 'v';
-          }
-        }
-      }
-    }
-    // farmer peripheral bottom
-    if (levelOne.map[farmer.currentTile + 34] === 0 || levelOne.map[farmer.currentTile + 34] === 'v') {
-      levelOne.map[farmer.currentTile + 34] = 'v';
-      if (levelOne.map[farmer.currentTile + 35] === 0 || levelOne.map[farmer.currentTile + 35] === 'v') {
-        levelOne.map[farmer.currentTile + 35] = 'v';
-        if (levelOne.map[farmer.currentTile + 36] === 0 || levelOne.map[farmer.currentTile + 36] === 'v') {
-          levelOne.map[farmer.currentTile + 36] = 'v';
-        }
-      }
-    }
-    //farmer peripheral top
-    if (levelOne.map[farmer.currentTile - 30] === 0 || levelOne.map[farmer.currentTile - 30] === 'v') {
-      levelOne.map[farmer.currentTile - 30] = 'v';
-      if (levelOne.map[farmer.currentTile - 29] === 0 || levelOne.map[farmer.currentTile - 29] === 'v') {
-        levelOne.map[farmer.currentTile - 29] = 'v';
-        if (levelOne.map[farmer.currentTile - 28] === 0 || levelOne.map[farmer.currentTile - 28] === 'v') {
-          levelOne.map[farmer.currentTile - 28] = 'v';
-        }
-      }
-    }
-  } else if (farmer.direction === 'y' && farmer.speed === -2) {
-    // the farmer is is going up
-    // clear all 'v'
-
-    // farmer
-    // farmer line
-    if (levelOne.map[farmer.currentTile - 32] === 0 || levelOne.map[farmer.currentTile - 32] === 'v') {
-      levelOne.map[farmer.currentTile - 32] = 'v';
-      if (levelOne.map[farmer.currentTile - 64] === 0 || levelOne.map[farmer.currentTile - 64] === 'v') {
-        levelOne.map[farmer.currentTile - 64] = 'v';
-        if (levelOne.map[farmer.currentTile - 96] === 0 || levelOne.map[farmer.currentTile - 96] === 'v') {
-          levelOne.map[farmer.currentTile - 96] = 'v';
-          if (levelOne.map[farmer.currentTile - 128] === 0 || levelOne.map[farmer.currentTile - 128] === 'v') {
-            levelOne.map[farmer.currentTile - 128] = 'v';
-          }
-        }
-      }
-    }
-    // farmer peripheral left
-    if (levelOne.map[farmer.currentTile - 65] === 0 || levelOne.map[farmer.currentTile - 65] === 'v') {
-      levelOne.map[farmer.currentTile - 65] = 'v';
-      if (levelOne.map[farmer.currentTile - 97] === 0 || levelOne.map[farmer.currentTile - 97] === 'v') {
-        levelOne.map[farmer.currentTile - 97] = 'v';
-        if (levelOne.map[farmer.currentTile - 129] === 0 || levelOne.map[farmer.currentTile - 129] === 'v') {
-          levelOne.map[farmer.currentTile - 129] = 'v';
-        }
-      }
-    }
-    // farmer peripheral bottom
-    if (levelOne.map[farmer.currentTile - 63] === 0 || levelOne.map[farmer.currentTile - 63] === 'v') {
-      levelOne.map[farmer.currentTile - 63] = 'v';
-      if (levelOne.map[farmer.currentTile - 95] === 0 || levelOne.map[farmer.currentTile - 95] === 'v') {
-        levelOne.map[farmer.currentTile - 95] = 'v';
-        if (levelOne.map[farmer.currentTile - 127] === 0 || levelOne.map[farmer.currentTile - 127] === 'v') {
-          levelOne.map[farmer.currentTile - 127] = 'v';
-        }
-      }
-    }
-  } else if (farmer.direction === 'y' && farmer.speed === 2) {
-    // the farmer is is going up
-    // clear all 'v'
-
-    // farmer
-    // farmer line
-    if (levelOne.map[farmer.currentTile + 32] === 0 || levelOne.map[farmer.currentTile + 32] === 'v') {
-      levelOne.map[farmer.currentTile + 32] = 'v';
-      if (levelOne.map[farmer.currentTile + 64] === 0 || levelOne.map[farmer.currentTile + 64] === 'v') {
-        levelOne.map[farmer.currentTile + 64] = 'v';
-        if (levelOne.map[farmer.currentTile + 96] === 0 || levelOne.map[farmer.currentTile + 96] === 'v') {
-          levelOne.map[farmer.currentTile + 96] = 'v';
-          if (levelOne.map[farmer.currentTile + 128] === 0 || levelOne.map[farmer.currentTile + 128] === 'v') {
-            levelOne.map[farmer.currentTile + 128] = 'v';
-          }
-        }
-      }
-    }
-    // farmer peripheral left
-    if (levelOne.map[farmer.currentTile + 65] === 0 || levelOne.map[farmer.currentTile + 65] === 'v') {
-      levelOne.map[farmer.currentTile + 65] = 'v';
-      if (levelOne.map[farmer.currentTile + 97] === 0 || levelOne.map[farmer.currentTile + 97] === 'v') {
-        levelOne.map[farmer.currentTile + 97] = 'v';
-        if (levelOne.map[farmer.currentTile + 129] === 0 || levelOne.map[farmer.currentTile + 129] === 'v') {
-          levelOne.map[farmer.currentTile + 129] = 'v';
-        }
-      }
-    }
-    // farmer peripheral bottom
-    if (levelOne.map[farmer.currentTile + 63] === 0 || levelOne.map[farmer.currentTile + 63] === 'v') {
-      levelOne.map[farmer.currentTile + 63] = 'v';
-      if (levelOne.map[farmer.currentTile + 95] === 0 || levelOne.map[farmer.currentTile + 95] === 'v') {
-        levelOne.map[farmer.currentTile + 95] = 'v';
-        if (levelOne.map[farmer.currentTile + 127] === 0 || levelOne.map[farmer.currentTile + 127] === 'v') {
-          levelOne.map[farmer.currentTile + 127] = 'v';
-        }
-      }
-    }
-  }
-  levelOne.drawTheMap();
-}
 
 
 
@@ -237,11 +255,49 @@ export function callDrawFarmer() {
   } else if (farmer.direction === 'x') {
     farmer.x += farmer.speed;
   }
-  farmerVision();
+  farmer.farmerVision();
+  dog.farmerVision();
   drawFarmer();
 }
 // solve for making the farmer look better farmer.y - (farmer.tileSize / 2)
 
+
+export function callDrawDog() {
+  dog.tileX = Math.floor(dog.x / levelOne.tileSize);
+  dog.tileY = Math.floor(dog.y / levelOne.tileSize);
+  console.log(dog.tileY * levelOne.columns + dog.tileX);
+  dog.currentTile = (dog.tileY * levelOne.columns + dog.tileX);
+  if (dog.currentTile === 436) {
+    dog.direction = 'y';
+    dog.speed = -2;
+  } else if (dog.currentTile === 276) {
+    dog.direction = 'x';
+    dog.speed = -2;
+  } else if (dog.currentTile === 273) {
+    dog.direction = 'y';
+    dog.speed = -2;
+  } else if (dog.currentTile === 81) {
+    dog.direction = 'x';
+    dog.speed = -2;
+  } else if (dog.currentTile === 75) {
+    dog.direction = 'y';
+    dog.speed = 2;
+  } else if (dog.currentTile === 299) {
+    dog.direction = 'x';
+    dog.speed = -2;
+  } else if (dog.currentTile === 294) {
+    dog.direction = 'y';
+    dog.speed = 2;
+  } else if (dog.currentTile === 422) {
+    dog.direction = 'x';
+    dog.speed = 2;
+  }
+  if (dog.direction === 'y') {
+    dog.y += dog.speed;
+  } else if (dog.direction === 'x') {
+    dog.x += dog.speed;
+  }
+}
 
 function farmerLoop() {
   let count = 0;

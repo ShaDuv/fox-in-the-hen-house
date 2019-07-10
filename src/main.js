@@ -60,7 +60,7 @@ let farmerYell = new Audio(farmerYellSound);
 let foxGrowl = new Audio(foxGrowlSound);
 
 //volume adjustments for soundfiles
-eatChicken.volume = .2;
+eatChicken.volume = .8;
 backgroundMusic.volume = .1;
 farmerYell.volume = .2;
 foxGrowl.volume=.2;
