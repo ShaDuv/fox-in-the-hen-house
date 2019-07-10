@@ -1,10 +1,35 @@
 import $ from 'jquery';
 import './styles.css';
-import { Player } from './map.js';
-import { keyDownHandler } from './movement.js';
-import { keyUpHandler } from './movement.js';
+import { keyDownHandler } from './player.js';
+import { keyUpHandler } from './player.js';
+import { loopityLoop } from './player.js';
+import { drawTheMap } from './grid.js';
+import { Level } from './grid.js';
 
-let fox = new Player;
+export const levelOne = new Level;
+  levelOne.map =
+  [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+    1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+    1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+    1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+    1,0,0,0,0,0,0,0,0,1,1,0,0,0,0,1,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,1,
+    1,0,0,0,0,0,0,0,1,0,0,1,0,0,1,1,1,0,0,0,1,0,1,0,1,0,1,0,0,0,0,1,
+    1,0,0,0,0,0,0,0,1,0,0,0,0,1,1,0,1,1,0,0,1,0,1,1,1,0,1,0,0,0,0,1,
+    1,0,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,1,0,0,1,0,0,1,0,0,1,0,0,0,0,1,
+    1,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,1,0,0,1,0,0,0,0,0,1,0,0,0,0,1,
+    1,0,0,0,0,0,0,0,1,0,0,1,0,1,0,0,0,1,0,0,1,0,0,0,0,0,1,0,0,0,0,1,
+    1,0,0,0,0,0,0,0,0,1,1,0,0,1,0,0,0,1,0,0,1,0,0,0,0,0,1,0,0,0,0,1,
+    1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+    1,0,1,0,0,1,1,1,0,0,1,1,0,1,1,0,1,1,1,0,0,0,1,0,0,0,1,1,0,0,1,1,
+    1,0,1,0,1,0,0,0,0,0,1,0,1,0,1,0,1,0,0,0,0,1,1,1,0,0,1,0,1,0,1,1,
+    1,0,1,0,0,1,1,1,0,0,1,0,0,0,1,0,1,1,0,0,1,1,0,1,1,0,1,0,1,0,1,1,
+    1,0,1,0,0,0,0,1,0,0,1,0,0,0,1,0,1,0,0,0,1,0,1,0,1,0,1,0,0,1,1,1,
+    1,0,1,0,1,1,1,0,0,0,1,0,0,0,1,0,1,1,1,0,1,0,0,0,1,0,1,0,0,0,1,1,
+    1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1];
+
+    levelOne.columns = 32; //32 columns in the map array
+    levelOne.rows = 18; //18 rows in the map array
+    levelOne.tileSize = 20; //each tile will be 20 pixels square
 
 //sound related imports and variables-----------------------------------------
 
@@ -46,9 +71,8 @@ else {
 document.addEventListener('keydown', keyDownHandler);
 document.addEventListener('keyup', keyUpHandler);
 
-$(document).ready(function () {
-  var mapStuff = document.getElementById('map');
-//solution to pause error found on stack overflow
+window.requestAnimationFrame(loopityLoop);
+levelOne.drawTheMap();
 
 backgroundMusic.pause();
 setTimeout(function () {
