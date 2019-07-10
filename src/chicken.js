@@ -3,8 +3,8 @@ import { drawTheMap } from './grid.js';
 
 class Player {
   constructor() {
-    this.x = 1140;
-    this.y = 460;
+    this.x = 1130;
+    this.y = 440;
     this.tileSize = 40;
     this.tileX = 28;
     this.tileY = 11;
@@ -14,6 +14,7 @@ class Player {
 
 export const chicken = new Player;
 
+let chicken_down = document.getElementById("chicken-down");
 
 export function drawChicken() {
   chicken.tileX = Math.floor(chicken.x / levelOne.tileSize);
@@ -22,9 +23,7 @@ export function drawChicken() {
   let ctx = document.getElementById('chicken').getContext('2d');
 
   ctx.beginPath();
-  ctx.fillStyle = '#fff';
-  ctx.arc(chicken.x, chicken.y, chicken.tileSize / 2, 0, 2 * Math.PI)
-  ctx.fill()
+  ctx.drawImage (chicken_down, chicken.x, chicken.y, chicken.tileSize, chicken.tileSize);
   // ctx.fillRect(fox.x, fox.y, fox.tileSize, fox.tileSize);
   ctx.closePath()
   levelOne.map[chicken.currentTile] = 'c';
