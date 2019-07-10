@@ -81,28 +81,6 @@ levelOne.map =
       }, false);
     }
   }
-
-  // Map and image data section. Importing png, sprites, etc...
-  //code from PothOnProgramming for loading the png into our program. Found at: https://github.com/frankarendpoth/frankarendpoth.github.io/blob/master/content/pop-vlog/javascript/2018/006-rabbit-trap/05/main-05.js
-
-  // const MapManager = function () {
-  //   this.tile_set_image = undefined;
-  // };
-  //
-  // MapManager.prototype = {
-  //
-  //   constructor: MapManager,
-  //
-  //   loadTileSetImage:function(url, callback) {
-  //     this.tile_set_image = new Image();
-  //     this.tile_set_image.addEventListener('load', function(event) {
-  //       callback();
-  //     }, { once : true});
-  //     this.tile_set_image.src = url;
-  //   }
-  // }
-  // const loadSprites = new MapManager();
-  // loadSprites.loadTileSetImage("")
   document.addEventListener('keydown', keyDownHandler);
   document.addEventListener('keyup', keyUpHandler);
 
@@ -139,4 +117,3 @@ levelOne.map =
       eatChicken.play();
       return false;
     }
-  }
