@@ -103,8 +103,8 @@ export function loopityLoop() {
     }
   }
   // else {
-  //     console.log('Only an idiot would think that foxes can walk though non-zero walls Daniel!');
-  //   }
+    //     console.log('Only an idiot would think that foxes can walk though non-zero walls Daniel!');
+    //   }
 
     if (isFoxCaught() && isChickenBeingEaten()) {
       drawPlayer();

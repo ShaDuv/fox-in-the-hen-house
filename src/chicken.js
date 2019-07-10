@@ -26,6 +26,5 @@ export function drawChicken() {
   ctx.drawImage (chicken_down, chicken.x, chicken.y, chicken.tileSize, chicken.tileSize);
   // ctx.fillRect(fox.x, fox.y, fox.tileSize, fox.tileSize);
   ctx.closePath()
-  console.log(chicken.currentTile);
   levelOne.map[chicken.currentTile] = 'c';
 }
