@@ -14,7 +14,7 @@ export class Level {
     this.map = [];
     this.columns = 0;
     this.rows = 0;
-    this.tileSize = 20;
+    this.tileSize = 40;
     }
     drawTheMap() {
       console.log('in draw the map');

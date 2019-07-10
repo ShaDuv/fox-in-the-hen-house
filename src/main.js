@@ -40,7 +40,7 @@ export const levelOne = new Level;
 
     levelOne.columns = 32; //32 columns in the map array
     levelOne.rows = 18; //18 rows in the map array
-    levelOne.tileSize = 20; //each tile will be 20 pixels square
+    
 
 //sound related imports and variables-----------------------------------------
 
@@ -90,4 +90,4 @@ setTimeout(function () {
   backgroundMusic.play();
 }, 150);
 
-});
+// });

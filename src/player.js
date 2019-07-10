@@ -2,13 +2,13 @@ import { levelOne } from './main.js';
 
 class Player {
   constructor() {
-    this.x = 20;
-    this.y = 20;
+    this.x = 60;
+    this.y = 60;
     this.up = false;
     this.left = false;
     this.down = false;
     this.right = false;
-    this.tileSize = 20;
+    this.tileSize = 40;
     this.tileX = 1;
     this.tileY = 1;
     this.speed = 3;
@@ -17,15 +17,20 @@ class Player {
 }
 function drawPlayer() {
   let ctx = document.getElementById('creatures').getContext('2d');
-  ctx.clearRect(0, 0, 1000, 1000)
-  // ctx.beginPath();
+  ctx.clearRect(0, 0, 1280, 720)
+  ctx.beginPath();
   ctx.fillStyle = '#FF0990';
-  ctx.fillRect(fox.x, fox.y, 20, 20);
-  // ctx.closePath()
+  ctx.arc(fox.x, fox.y, fox.tileSize / 2, 0, 2 * Math.PI)
+  ctx.fill()
+  // ctx.fillRect(fox.x, fox.y, fox.tileSize, fox.tileSize);
+  ctx.closePath()
   window.requestAnimationFrame(loopityLoop);
 }
 
-const fox = new Player;
+const fox = new Player();
+// fox.x = levelOne.tileSize;
+// fox.y = levelOne.tileSize;
+// fox.tileSize = levelOne.tileSize;
 
 export function keyDownHandler(event) {
   if (event.keyCode === 87 || event.keyCode === 38) {
@@ -70,26 +75,26 @@ export function keyUpHandler(event) {
 export function loopityLoop() {
   fox.tileX = Math.floor(fox.x / levelOne.tileSize);
   fox.tileY = Math.floor(fox.y / levelOne.tileSize);
-  console.log(fox.tileX + ', ' + fox.tileY + ', ' + levelOne.map[(fox.tileY * levelOne.columns + fox.tileX)]);
+
 
   let testPosition = Math.floor((fox.x - fox.speed) / levelOne.tileSize);
-  console.log('testPosition: ', testPosition);
+
     if (fox.up) {
       // if you move up 3 pixels will that put you into a tile that contains a 1
-      if (Math.floor(levelOne.map[Math.floor((fox.y - fox.speed) / levelOne.tileSize) * levelOne.columns + fox.tileX]) === 0 ) {
+      if (Math.floor(levelOne.map[Math.floor((fox.y - fox.speed - (levelOne.tileSize / 2)) / levelOne.tileSize) * levelOne.columns + fox.tileX]) === 0 ) {
         fox.y -= fox.speed;
       }
     } else if (fox.left) {
       // console.log('this is what you want'); //Math.floor(levelOne.map[testPosition * levelOne.columns + fox.tileX]));
-      if (Math.floor(levelOne.map[(fox.tileY * levelOne.columns + Math.floor((fox.x - fox.speed) / levelOne.tileSize))]) === 0 ) {
+      if (Math.floor(levelOne.map[(fox.tileY * levelOne.columns + Math.floor((fox.x - fox.speed - (levelOne.tileSize / 2)) / levelOne.tileSize))]) === 0 ) {
       fox.x -= fox.speed;
     }
     } else if (fox.down) {
-      if (Math.floor(levelOne.map[Math.floor(((fox.y + levelOne.tileSize) + fox.speed) / levelOne.tileSize) * levelOne.columns + fox.tileX]) === 0 ) {
+      if (Math.floor(levelOne.map[Math.floor(((fox.y + (levelOne.tileSize / 2)) + fox.speed) / levelOne.tileSize) * levelOne.columns + fox.tileX]) === 0 ) {
       fox.y += fox.speed;
     }
     } else if (fox.right) {
-      if (Math.floor(levelOne.map[(fox.tileY * levelOne.columns + Math.floor((fox.x + fox.speed) / levelOne.tileSize))]) === 0 ) {
+      if (Math.floor(levelOne.map[(fox.tileY * levelOne.columns + Math.floor((fox.x + fox.speed + (levelOne.tileSize / 2)) / levelOne.tileSize))]) === 0 ) {
         fox.x += fox.speed;
     }
     }
