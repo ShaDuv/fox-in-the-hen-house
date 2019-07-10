@@ -7,6 +7,7 @@ import { drawTheMap } from './grid.js';
 import { Level } from './grid.js';
 import { callDrawFarmer } from './farmer.js';
 import { fox } from './player.js';
+import { drawChicken } from './chicken.js'
 
 export const levelOne = new Level;
   levelOne.map =
@@ -49,7 +50,7 @@ export const levelOne = new Level;
 //import sounds
 let eatChickenSound = require('./audio/Chicken-Fuss-in-Coop.mp3');
 let backgroundSound = require('./audio/countryside-ambiance.wav');
-let farmerYellSound = require('./audio/male-offended-hey-shout-full.mp3');
+let farmerYellSound = require('./audio/male-shout.wav');
 let foxGrowlSound = require ('./audio/foxGrowl.wav');
 
 //define sounds in new Audio objects for value adjustments such as volume
@@ -84,6 +85,7 @@ else {
 document.addEventListener('keydown', keyDownHandler);
 document.addEventListener('keyup', keyUpHandler);
 
+drawChicken();
 window.requestAnimationFrame(loopityLoop);
 levelOne.drawTheMap();
 
@@ -103,4 +105,14 @@ export function isFoxCaught() {
     return false;
   }
 
+}
+export function isChickenBeingEaten() {
+  console.log(!(levelOne.map[fox.tileY * levelOne.columns + fox.tileX] === 'c'));
+  if (!(levelOne.map[fox.tileY * levelOne.columns + fox.tileX] === 'c')) {
+    return true;
+  } else {
+    console.log('The chicken is dead.');
+    eatChicken.play();
+    return false;
+  }
 }
