@@ -84,7 +84,7 @@ export function loopityLoop() {
 
     if (fox.up) {
       // if you move up 3 pixels will that put you into a tile that contains a 1
-      if (Math.floor(levelOne.map[Math.floor((fox.y - fox.speed - (levelOne.tileSize / 2)) / levelOne.tileSize) * levelOne.columns + fox.tileX]) === 0 ) {
+      if (Math.floor(levelOne.map[Math.floor((fox.y - fox.speed - (levelOne.tileSize / 2)) / levelOne.tileSize) * levelOne.columns + fox.tileX]) === 0 || Math.floor(levelOne.map[Math.floor((fox.y - fox.speed - (levelOne.tileSize / 2)) / levelOne.tileSize) * levelOne.columns + fox.tileX]) === 'v') {
         fox.y -= fox.speed;
       }
     } else if (fox.left) {
