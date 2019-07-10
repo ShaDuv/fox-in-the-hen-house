@@ -75,13 +75,13 @@ export function loopityLoop() {
   let testPosition = Math.floor((fox.x - fox.speed) / levelOne.tileSize);
   console.log('testPosition: ', testPosition);
     if (fox.up) {
-      // if you move up 3 pixels will that put you into a tile that contains a 1// look here !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! can't go left at the top!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+      // if you move up 3 pixels will that put you into a tile that contains a 1
       if (Math.floor(levelOne.map[Math.floor((fox.y - fox.speed) / levelOne.tileSize) * levelOne.columns + fox.tileX]) === 0 ) {
         fox.y -= fox.speed;
       }
     } else if (fox.left) {
       // console.log('this is what you want'); //Math.floor(levelOne.map[testPosition * levelOne.columns + fox.tileX]));
-      if (Math.floor(levelOne.map[Math.floor((fox.y - fox.speed) / levelOne.tileSize) * levelOne.columns + fox.tileX]) === 0 ) {
+      if (Math.floor(levelOne.map[(fox.tileY * levelOne.columns + Math.floor((fox.x - fox.speed) / levelOne.tileSize))]) === 0 ) {
       fox.x -= fox.speed;
     }
     } else if (fox.down) {
@@ -89,7 +89,9 @@ export function loopityLoop() {
       fox.y += fox.speed;
     }
     } else if (fox.right) {
-      fox.x += fox.speed;
+      if (Math.floor(levelOne.map[(fox.tileY * levelOne.columns + Math.floor((fox.x + fox.speed) / levelOne.tileSize))]) === 0 ) {
+        fox.x += fox.speed;
+    }
     }
   // else {
   //   console.log('Only an idiot would think that foxes can walk though non-zero walls Daniel!');
