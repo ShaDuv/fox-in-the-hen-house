@@ -68,35 +68,39 @@ levelOne.map =
   //solution found on stack overflow that helps with a loop issue with some browsers
   //the if statement helps make this solution adapt to other browser features as
   //well as future updates, while solving the issue, now.
+  $(document).ready( function () {
+    $('#start-screen').click(function () {
+      $('#start-screen').hide();
+      $('#game').show();
+      if (typeof backgroundMusic.loop == 'boolean')
+      {
+        backgroundMusic.loop = true;
+      }
+      else {
+        {
+          backgroundMusic.addEventListener('ended', function() {
+            this.currentTime = 0;
+            this.play();
+          }, false);
+        }
+      }
+      document.addEventListener('keydown', keyDownHandler);
+      document.addEventListener('keyup', keyUpHandler);
 
-  if (typeof backgroundMusic.loop == 'boolean')
-  {
-    backgroundMusic.loop = true;
-  }
-  else {
-    {
-      backgroundMusic.addEventListener('ended', function() {
-        this.currentTime = 0;
-        this.play();
-      }, false);
-    }
-  }
-  document.addEventListener('keydown', keyDownHandler);
-  document.addEventListener('keyup', keyUpHandler);
+      drawChicken();
+      window.requestAnimationFrame(loopityLoop);
+      levelOne.drawTheMap();
 
-  drawChicken();
-  window.requestAnimationFrame(loopityLoop);
-  levelOne.drawTheMap();
-
-  //code from PothOnProgramming for loading the png into our program
+      //code from PothOnProgramming for loading the png into our program
 
 
 
-  backgroundMusic.pause();
-  setTimeout(function () {
-    backgroundMusic.play();
-  }, 150);
-
+      backgroundMusic.pause();
+      setTimeout(function () {
+        backgroundMusic.play();
+      }, 150);
+    })
+});
   // });
 
   export function isFoxCaught() {
@@ -105,6 +109,8 @@ levelOne.map =
     } else {
       console.log('The fox has been caught.');
       farmerYell.play();
+      $('#lose').show();
+      $("#game").hide();
       return false;
     }
 
@@ -115,6 +121,9 @@ levelOne.map =
     } else {
       console.log('The chicken is dead.');
       eatChicken.play();
+      $('#win').show();
+      $("#game").hide();
       return false;
+
     }
 }

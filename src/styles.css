@@ -3,16 +3,39 @@
   top: 0;
   left: 0;
 }
-#game {
-  background-image: url("./img/background.jpg");
-  z-index: 0;
+#start-screen {
+  width: 100%;
+  height: auto;
+  z-index: 5;
 }
-#map {
+#game {
+  display: none;
+}
+#game-canvas {
+  background-image: url("./img/background.jpg");
   z-index: 1;
 }
-#creatures {
+#map {
   z-index: 2;
 }
-#chicken {
+#creatures {
   z-index: 3;
+}
+#chicken {
+  z-index: 4;
+}
+#win{
+  display: none;
+  width: 100%;
+  height: auto;
+  z-index: 5;
+}
+#lose{
+  display: none;
+  width: 100%;
+  height: auto;
+  z-index: 5;
+}
+#images {
+  display: none;
 }
