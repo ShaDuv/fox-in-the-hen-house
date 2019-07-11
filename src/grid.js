@@ -60,7 +60,7 @@ export class Level {
         ctx.drawImage (bush, xCoord, yCoord, this.tileSize, this.tileSize);
       } else if (this.map[i] === 0) {
         ctx.clearRect(xCoord, yCoord, this.tileSize, this.tileSize);
-      } else if (this.map[i] === 'v') {
+      } else if (this.map[i] === 'v' || this.map[i] === 'd') {
         ctx.fillStyle = 'rgba(255, 255, 153, 0.1)';
         ctx.fillRect(xCoord, yCoord, this.tileSize, this.tileSize);
       } else if (this.map[i] === 'c') {

@@ -61,9 +61,9 @@ levelOne.map =
 
   //volume adjustments for soundfiles
   eatChicken.volume = .8;
-  backgroundMusic.volume = .1;
-  farmerYell.volume = .2;
-  foxGrowl.volume=.2;
+  backgroundMusic.volume = .5;
+  farmerYell.volume = .8;
+  foxGrowl.volume=.8;
 
   //solution found on stack overflow that helps with a loop issue with some browsers
   //the if statement helps make this solution adapt to other browser features as
@@ -104,15 +104,21 @@ levelOne.map =
   // });
 
   export function isFoxCaught() {
-    if (!(levelOne.map[fox.tileY * levelOne.columns + fox.tileX] === 'v')) {
+    if (!(levelOne.map[fox.tileY * levelOne.columns + fox.tileX] === 'v') && !(levelOne.map[fox.tileY * levelOne.columns + fox.tileX] === 'd')) {
       return true;
     } else {
       console.log('The fox has been caught.');
-      farmerYell.play();
+        if (levelOne.map[fox.tileY * levelOne.columns + fox.tileX] === 'v') {
+          farmerYell.play();
+        } else {
+          foxGrowl.play();
+        }
       $('#lose').show();
       $("#game").hide();
       return false;
     }
+
+
 
   }
   export function isChickenBeingEaten() {
