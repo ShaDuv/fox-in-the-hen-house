@@ -214,23 +214,23 @@ function drawFarmer() {
 
 
   if (farmer.direction === 'x' && farmer.speed < 0) {
-    ctx.drawImage (farmerImageLeft, farmer.x, farmer.y, farmer.tileSize, farmer.tileSize);
+    ctx.drawImage (farmerImageLeft, farmer.x - (farmer.tileSize - 20), farmer.y - (farmer.tileSize - 20), farmer.tileSize, farmer.tileSize);
   } else if (farmer.direction === 'x' && farmer.speed > 0) {
-    ctx.drawImage (farmerImageRight, farmer.x, farmer.y, farmer.tileSize, farmer.tileSize);
+    ctx.drawImage (farmerImageRight, farmer.x - (farmer.tileSize - 20), farmer.y - (farmer.tileSize - 20), farmer.tileSize, farmer.tileSize);
   } else if (farmer.direction === 'y' && farmer.speed < 0) {
-    ctx.drawImage (farmerImageUp, farmer.x, farmer.y, farmer.tileSize, farmer.tileSize);
+    ctx.drawImage (farmerImageUp, farmer.x - (farmer.tileSize - 20), farmer.y - (farmer.tileSize - 20), farmer.tileSize, farmer.tileSize);
   } else if (farmer.direction === 'y' && farmer.speed > 0) {
-    ctx.drawImage (farmerImageDown, farmer.x, farmer.y, farmer.tileSize, farmer.tileSize);
+    ctx.drawImage (farmerImageDown, farmer.x - (farmer.tileSize - 20), farmer.y - (farmer.tileSize - 20), farmer.tileSize, farmer.tileSize);
   }
 
   if (dog.direction === 'x' && dog.speed < 0) {
-    ctx.drawImage (dogImageLeft, dog.x, dog.y, dog.tileSize, dog.tileSize);
+    ctx.drawImage (dogImageLeft, dog.x - (dog.tileSize / 2), dog.y - (dog.tileSize / 2), dog.tileSize, dog.tileSize);
   } else if (dog.direction === 'x' && dog.speed > 0) {
-    ctx.drawImage (dogImageRight, dog.x, dog.y, dog.tileSize, dog.tileSize);
+    ctx.drawImage (dogImageRight, dog.x - (dog.tileSize / 2), dog.y - (dog.tileSize / 2), dog.tileSize, dog.tileSize);
   } else if (dog.direction === 'y' && dog.speed < 0) {
-    ctx.drawImage (dogImageUp, dog.x, dog.y, dog.tileSize, dog.tileSize);
+    ctx.drawImage (dogImageUp, dog.x - (dog.tileSize / 2), dog.y - (dog.tileSize / 2), dog.tileSize, dog.tileSize);
   } else if (dog.direction === 'y' && dog.speed > 0) {
-    ctx.drawImage (dogImageDown, dog.x, dog.y, dog.tileSize, dog.tileSize);
+    ctx.drawImage (dogImageDown, dog.x - (dog.tileSize / 2), dog.y - (dog.tileSize / 2), dog.tileSize, dog.tileSize);
   }
 
 
@@ -288,16 +288,16 @@ export function callDrawDog() {
   dog.currentTile = (dog.tileY * levelOne.columns + dog.tileX);
   if (dog.currentTile === 250) {
     dog.direction = 'x';
-    dog.speed = 12;
+    dog.speed = 8;
   } else if (dog.currentTile === 254) {
     dog.direction = 'y';
-    dog.speed = 12;
+    dog.speed = 8;
   } else if (dog.currentTile === 542) {
     dog.direction = 'x';
-    dog.speed = -12;
+    dog.speed = -8;
   } else if (dog.currentTile === 538) {
     dog.direction = 'y';
-    dog.speed = -12;
+    dog.speed = -8;
   }
   if (dog.direction === 'y') {
     dog.y += dog.speed;
