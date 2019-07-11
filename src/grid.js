@@ -26,6 +26,7 @@ export class Level {
     let roofRight = document.getElementById("roof-right");
     let pinkTree = document.getElementById("pink-tree");
     let bush = document.getElementById("bush");
+    let chicken_down = document.getElementById("chicken-down");
 
     let xCoord = 0;
     let yCoord = 0;
@@ -62,7 +63,10 @@ export class Level {
       } else if (this.map[i] === 'v') {
         ctx.fillStyle = 'rgba(255, 255, 153, 0.1)';
         ctx.fillRect(xCoord, yCoord, this.tileSize, this.tileSize);
+      } else if (this.map[i] === 'c') {
+        ctx.drawImage (chicken_down, xCoord, yCoord, this.tileSize, this.tileSize);
       }
+
     }
   }
 }
