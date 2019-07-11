@@ -15,43 +15,58 @@ class Player {
     this.tileX = 1;
     this.tileY = 1;
     this.speed = 3;
+    this.direction = foxImageRight;
   }
 
 }
 function drawPlayer() {
   let ctx = document.getElementById('creatures').getContext('2d');
-  ctx.clearRect(0, 0, 1280, 720)
-  ctx.beginPath();
-  ctx.fillStyle = '#FF0990';
-  ctx.arc(fox.x, fox.y, fox.tileSize / 2, 0, 2 * Math.PI)
-  ctx.fill()
-  // ctx.fillRect(fox.x, fox.y, fox.tileSize, fox.tileSize);
-  ctx.closePath()
 
+
+  ctx.clearRect(0, 0, 1280, 720);
+
+  if (fox.left) {
+    ctx.drawImage (foxImageLeft, fox.x, fox.y, fox.tileSize, fox.tileSize);
+  } else if (fox.right) {
+    ctx.drawImage (foxImageRight, fox.x, fox.y, fox.tileSize, fox.tileSize);
+  } else if (fox.up) {
+    ctx.drawImage (foxImageUp, fox.x, fox.y, fox.tileSize, fox.tileSize);
+  } else if (fox.down) {
+    ctx.drawImage (foxImageDown, fox.x, fox.y, fox.tileSize, fox.tileSize);
+  } else {
+    ctx.drawImage (fox.direction, fox.x, fox.y, fox.tileSize, fox.tileSize);
+  }
   window.requestAnimationFrame(loopityLoop);
 }
 
+const foxImageLeft = document.getElementById("fox-left");
+const foxImageRight = document.getElementById("fox-right");
+const foxImageUp = document.getElementById("fox-up");
+const foxImageDown = document.getElementById("fox-down");
+
 export const fox = new Player();
-// fox.x = levelOne.tileSize;
-// fox.y = levelOne.tileSize;
-// fox.tileSize = levelOne.tileSize;
+
 
 export function keyDownHandler(event) {
   if (event.keyCode === 87 || event.keyCode === 38) {
     // if w or up arrow
     fox.up = true;
+    fox.direction = foxImageUp;
     console.log('Up.');
   } else if (event.keyCode === 65 || event.keyCode === 37) {
     // if a left arrow
     fox.left = true;
+    fox.direction = foxImageLeft;
     console.log('Left');
   } else if (event.keyCode === 83 || event.keyCode === 40) {
     // if s or down arrow
     fox.down = true;
+    fox.direction = foxImageDown;
     console.log('Down');
   } else if (event.keyCode === 68 || event.keyCode === 39) {
     // if d or right arrow
     fox.right = true;
+    fox.direction = foxImageRight;
     console.log('Right');
   }
 }

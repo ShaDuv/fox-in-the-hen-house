@@ -202,20 +202,36 @@ dog.vision = 'd';
 
 function drawFarmer() {
   let ctx = document.getElementById('creatures').getContext('2d');
+  let dogImageLeft = document.getElementById("dog-left");
+  let dogImageRight = document.getElementById("dog-right");
+  let dogImageUp = document.getElementById("dog-up");
+  let dogImageDown = document.getElementById("dog-down");
+  let farmerImageLeft = document.getElementById("farmer-left");
+  let farmerImageRight = document.getElementById("farmer-right");
+  let farmerImageUp = document.getElementById("farmer-up");
+  let farmerImageDown = document.getElementById("farmer-down");
 
-  ctx.beginPath();
-  ctx.fillStyle = 'red';
-  ctx.arc(farmer.x, farmer.y, farmer.tileSize / 2, 0, 2 * Math.PI)
-  ctx.fill()
-  // ctx.fillRect(fox.x, fox.y, fox.tileSize, fox.tileSize);
-  ctx.closePath()
 
-  ctx.beginPath();
-  ctx.fillStyle = 'green';
-  ctx.arc(dog.x, dog.y, dog.tileSize / 2, 0, 2 * Math.PI)
-  ctx.fill()
-  // ctx.fillRect(fox.x, fox.y, fox.tileSize, fox.tileSize);
-  ctx.closePath()
+  if (farmer.direction === 'x' && farmer.speed < 0) {
+    ctx.drawImage (farmerImageLeft, farmer.x, farmer.y, farmer.tileSize, farmer.tileSize);
+  } else if (farmer.direction === 'x' && farmer.speed > 0) {
+    ctx.drawImage (farmerImageRight, farmer.x, farmer.y, farmer.tileSize, farmer.tileSize);
+  } else if (farmer.direction === 'y' && farmer.speed < 0) {
+    ctx.drawImage (farmerImageUp, farmer.x, farmer.y, farmer.tileSize, farmer.tileSize);
+  } else if (farmer.direction === 'y' && farmer.speed > 0) {
+    ctx.drawImage (farmerImageDown, farmer.x, farmer.y, farmer.tileSize, farmer.tileSize);
+  }
+
+  if (dog.direction === 'x' && dog.speed < 0) {
+    ctx.drawImage (dogImageLeft, dog.x, dog.y, dog.tileSize, dog.tileSize);
+  } else if (dog.direction === 'x' && dog.speed > 0) {
+    ctx.drawImage (dogImageRight, dog.x, dog.y, dog.tileSize, dog.tileSize);
+  } else if (dog.direction === 'y' && dog.speed < 0) {
+    ctx.drawImage (dogImageUp, dog.x, dog.y, dog.tileSize, dog.tileSize);
+  } else if (dog.direction === 'y' && dog.speed > 0) {
+    ctx.drawImage (dogImageDown, dog.x, dog.y, dog.tileSize, dog.tileSize);
+  }
+
 
 }
 
