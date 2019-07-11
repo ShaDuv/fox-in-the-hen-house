@@ -116,11 +116,12 @@ levelOne.map =
       $('#lose').show();
       $("#game").hide();
       return false;
+      }
     }
 
 
 
-  }
+
   export function isChickenBeingEaten() {
     if (!(levelOne.map[fox.tileY * levelOne.columns + fox.tileX] === 'c')) {
       return true;
