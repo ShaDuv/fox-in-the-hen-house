@@ -2,7 +2,7 @@
 
 The first group project for the intermediate Javascript class at the Epicodus, coding school. This is a Javascript and HTML5 based game, where the user is a fox eating chickens without being caught by the farmer.
 
-#### By Daniel Hongel. Created initially on July 5th, 2019.
+#### By Sam Cook, Erin Deuel, Shawna Duvall, Marina Poltorak, and Daniel Hongel Created initially on July 5th, 2019.
 
 ## Description
 
