@@ -20,7 +20,7 @@ export function drawChicken() {
   chicken.tileX = Math.floor(chicken.x / levelOne.tileSize);
   chicken.tileY = Math.floor(chicken.y / levelOne.tileSize);
   chicken.currentTile = (chicken.tileY * levelOne.columns + chicken.tileX);
-  let ctx = document.getElementById('chicken').getContext('2d');
+  // let ctx = document.getElementById('chicken').getContext('2d');
 
 
   // ctx.drawImage (chicken_down, chicken.x, chicken.y, chicken.tileSize, chicken.tileSize);

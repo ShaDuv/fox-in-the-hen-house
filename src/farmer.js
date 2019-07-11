@@ -200,22 +200,39 @@ dog.y = 300;
 dog.name = 'dog';
 dog.vision = 'd';
 
+const ctx = document.getElementById('creatures').getContext('2d');
+const dogImageLeft = document.getElementById("dog-left");
+const dogImageRight = document.getElementById("dog-right");
+const dogImageUp = document.getElementById("dog-up");
+const dogImageDown = document.getElementById("dog-down");
+const farmerImageLeft = document.getElementById("farmer-left");
+const farmerImageRight = document.getElementById("farmer-right");
+const farmerImageUp = document.getElementById("farmer-up");
+const farmerImageDown = document.getElementById("farmer-down");
+
 function drawFarmer() {
-  let ctx = document.getElementById('creatures').getContext('2d');
 
-  ctx.beginPath();
-  ctx.fillStyle = 'red';
-  ctx.arc(farmer.x, farmer.y, farmer.tileSize / 2, 0, 2 * Math.PI)
-  ctx.fill()
-  // ctx.fillRect(fox.x, fox.y, fox.tileSize, fox.tileSize);
-  ctx.closePath()
 
-  ctx.beginPath();
-  ctx.fillStyle = 'green';
-  ctx.arc(dog.x, dog.y, dog.tileSize / 2, 0, 2 * Math.PI)
-  ctx.fill()
-  // ctx.fillRect(fox.x, fox.y, fox.tileSize, fox.tileSize);
-  ctx.closePath()
+  if (farmer.direction === 'x' && farmer.speed < 0) {
+    ctx.drawImage (farmerImageLeft, farmer.x, farmer.y, farmer.tileSize, farmer.tileSize);
+  } else if (farmer.direction === 'x' && farmer.speed > 0) {
+    ctx.drawImage (farmerImageRight, farmer.x, farmer.y, farmer.tileSize, farmer.tileSize);
+  } else if (farmer.direction === 'y' && farmer.speed < 0) {
+    ctx.drawImage (farmerImageUp, farmer.x, farmer.y, farmer.tileSize, farmer.tileSize);
+  } else if (farmer.direction === 'y' && farmer.speed > 0) {
+    ctx.drawImage (farmerImageDown, farmer.x, farmer.y, farmer.tileSize, farmer.tileSize);
+  }
+
+  if (dog.direction === 'x' && dog.speed < 0) {
+    ctx.drawImage (dogImageLeft, dog.x, dog.y, dog.tileSize, dog.tileSize);
+  } else if (dog.direction === 'x' && dog.speed > 0) {
+    ctx.drawImage (dogImageRight, dog.x, dog.y, dog.tileSize, dog.tileSize);
+  } else if (dog.direction === 'y' && dog.speed < 0) {
+    ctx.drawImage (dogImageUp, dog.x, dog.y, dog.tileSize, dog.tileSize);
+  } else if (dog.direction === 'y' && dog.speed > 0) {
+    ctx.drawImage (dogImageDown, dog.x, dog.y, dog.tileSize, dog.tileSize);
+  }
+
 
 }
 
@@ -288,33 +305,3 @@ export function callDrawDog() {
     dog.x += dog.speed;
   }
 }
-
-function farmerLoop() {
-  let count = 0;
-  farmerTimer = setInterval(farmerMovement, 50);
-  function farmerMovement() {
-
-  }
-}
-
-
-
-
-
-// ProgressCountdown(10, 'pageBeginCountdown', 'pageBeginCountdownText');
-//
-//
-// function ProgressCountdown(timeleft, bar, text) {
-  //   return new Promise((resolve, reject) => {
-    //     var countdownTimer = setInterval(() => {
-      //       timeleft--;
-      //
-      //
-      //
-      //       if (timeleft <= 0) {
-        //         clearInterval(countdownTimer);
-        //         resolve();
-        //       }
-        //     }, 1000);
-        //   });
-        // }
