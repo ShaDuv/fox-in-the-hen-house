@@ -200,16 +200,17 @@ dog.y = 300;
 dog.name = 'dog';
 dog.vision = 'd';
 
+const ctx = document.getElementById('creatures').getContext('2d');
+const dogImageLeft = document.getElementById("dog-left");
+const dogImageRight = document.getElementById("dog-right");
+const dogImageUp = document.getElementById("dog-up");
+const dogImageDown = document.getElementById("dog-down");
+const farmerImageLeft = document.getElementById("farmer-left");
+const farmerImageRight = document.getElementById("farmer-right");
+const farmerImageUp = document.getElementById("farmer-up");
+const farmerImageDown = document.getElementById("farmer-down");
+
 function drawFarmer() {
-  let ctx = document.getElementById('creatures').getContext('2d');
-  let dogImageLeft = document.getElementById("dog-left");
-  let dogImageRight = document.getElementById("dog-right");
-  let dogImageUp = document.getElementById("dog-up");
-  let dogImageDown = document.getElementById("dog-down");
-  let farmerImageLeft = document.getElementById("farmer-left");
-  let farmerImageRight = document.getElementById("farmer-right");
-  let farmerImageUp = document.getElementById("farmer-up");
-  let farmerImageDown = document.getElementById("farmer-down");
 
 
   if (farmer.direction === 'x' && farmer.speed < 0) {
@@ -304,33 +305,3 @@ export function callDrawDog() {
     dog.x += dog.speed;
   }
 }
-
-function farmerLoop() {
-  let count = 0;
-  farmerTimer = setInterval(farmerMovement, 50);
-  function farmerMovement() {
-
-  }
-}
-
-
-
-
-
-// ProgressCountdown(10, 'pageBeginCountdown', 'pageBeginCountdownText');
-//
-//
-// function ProgressCountdown(timeleft, bar, text) {
-  //   return new Promise((resolve, reject) => {
-    //     var countdownTimer = setInterval(() => {
-      //       timeleft--;
-      //
-      //
-      //
-      //       if (timeleft <= 0) {
-        //         clearInterval(countdownTimer);
-        //         resolve();
-        //       }
-        //     }, 1000);
-        //   });
-        // }

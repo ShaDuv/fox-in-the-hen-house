@@ -20,11 +20,7 @@ class Player {
 
 }
 function drawPlayer() {
-  let ctx = document.getElementById('creatures').getContext('2d');
-
-
   ctx.clearRect(0, 0, 1280, 720);
-
   if (fox.left) {
     ctx.drawImage (foxImageLeft, fox.x, fox.y, fox.tileSize, fox.tileSize);
   } else if (fox.right) {
@@ -39,6 +35,7 @@ function drawPlayer() {
   window.requestAnimationFrame(loopityLoop);
 }
 
+const ctx = document.getElementById('creatures').getContext('2d');
 const foxImageLeft = document.getElementById("fox-left");
 const foxImageRight = document.getElementById("fox-right");
 const foxImageUp = document.getElementById("fox-up");
