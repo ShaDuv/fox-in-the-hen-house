@@ -9,6 +9,16 @@
 
 //the map of spaces using a one dimensional array
 //0's represent movable spaces, and 1's will represent nonmovable spaces.
+const roofCenterSideways = document.getElementById("roof-center-sideways");
+const roofEdgeUp = document.getElementById("roof-edge-up");
+const roofEdgeDown = document.getElementById("roof-edge-down");
+const treeLine = document.getElementById("treeline");
+const roofLeft = document.getElementById("roof-left");
+const roofCenter = document.getElementById("roof-center");
+const roofRight = document.getElementById("roof-right");
+const pinkTree = document.getElementById("pink-tree");
+const bush = document.getElementById("bush");
+const chicken_down = document.getElementById("chicken-down");
 export class Level {
   constructor() {
     this.map = [];
@@ -17,16 +27,6 @@ export class Level {
     this.tileSize = 40;
   }
   drawTheMap() {
-    let roofCenterSideways = document.getElementById("roof-center-sideways");
-    let roofEdgeUp = document.getElementById("roof-edge-up");
-    let roofEdgeDown = document.getElementById("roof-edge-down");
-    let treeLine = document.getElementById("treeline");
-    let roofLeft = document.getElementById("roof-left");
-    let roofCenter = document.getElementById("roof-center");
-    let roofRight = document.getElementById("roof-right");
-    let pinkTree = document.getElementById("pink-tree");
-    let bush = document.getElementById("bush");
-    let chicken_down = document.getElementById("chicken-down");
 
     let xCoord = 0;
     let yCoord = 0;

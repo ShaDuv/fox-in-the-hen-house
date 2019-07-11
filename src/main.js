@@ -48,16 +48,16 @@ levelOne.map =
   //sound related imports and variables-----------------------------------------
 
   //import sounds
-  let eatChickenSound = require('./audio/Chicken-Fuss-in-Coop.mp3');
-  let backgroundSound = require('./audio/countryside-ambiance.wav');
-  let farmerYellSound = require('./audio/male-shout.wav');
-  let foxGrowlSound = require ('./audio/foxGrowl.wav');
+  const eatChickenSound = require('./audio/Chicken-Fuss-in-Coop.mp3');
+  const backgroundSound = require('./audio/countryside-ambiance.wav');
+  const farmerYellSound = require('./audio/male-shout.wav');
+  const foxGrowlSound = require ('./audio/foxGrowl.wav');
 
   //define sounds in new Audio objects for value adjustments such as volume
-  let eatChicken = new Audio(eatChickenSound);
-  let backgroundMusic = new Audio(backgroundSound);
-  let farmerYell = new Audio(farmerYellSound);
-  let foxGrowl = new Audio(foxGrowlSound);
+  const eatChicken = new Audio(eatChickenSound);
+  const backgroundMusic = new Audio(backgroundSound);
+  const farmerYell = new Audio(farmerYellSound);
+  const foxGrowl = new Audio(foxGrowlSound);
 
   //volume adjustments for soundfiles
   eatChicken.volume = .8;
