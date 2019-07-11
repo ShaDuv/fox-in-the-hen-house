@@ -22,15 +22,15 @@ class Player {
 function drawPlayer() {
   ctx.clearRect(0, 0, 1280, 720);
   if (fox.left) {
-    ctx.drawImage (foxImageLeft, fox.x, fox.y, fox.tileSize, fox.tileSize);
+    ctx.drawImage (foxImageLeft, fox.x - (fox.tileSize / 2), fox.y - (fox.tileSize / 2), fox.tileSize, fox.tileSize);
   } else if (fox.right) {
-    ctx.drawImage (foxImageRight, fox.x, fox.y, fox.tileSize, fox.tileSize);
+    ctx.drawImage (foxImageRight, fox.x - (fox.tileSize / 2), fox.y - (fox.tileSize / 2), fox.tileSize, fox.tileSize);
   } else if (fox.up) {
-    ctx.drawImage (foxImageUp, fox.x, fox.y, fox.tileSize, fox.tileSize);
+    ctx.drawImage (foxImageUp, fox.x - (fox.tileSize / 2), fox.y - (fox.tileSize / 2), fox.tileSize, fox.tileSize);
   } else if (fox.down) {
-    ctx.drawImage (foxImageDown, fox.x, fox.y, fox.tileSize, fox.tileSize);
+    ctx.drawImage (foxImageDown, fox.x - (fox.tileSize / 2), fox.y - (fox.tileSize / 2), fox.tileSize, fox.tileSize);
   } else {
-    ctx.drawImage (fox.direction, fox.x, fox.y, fox.tileSize, fox.tileSize);
+    ctx.drawImage (fox.direction, fox.x - (fox.tileSize / 2), fox.y - (fox.tileSize / 2), fox.tileSize, fox.tileSize);
   }
   window.requestAnimationFrame(loopityLoop);
 }
@@ -97,20 +97,20 @@ export function loopityLoop() {
 
   if (fox.up) {
     // if you move up 3 pixels will that put you into a tile that contains a 1
-    if (Math.floor(levelOne.map[Math.floor((fox.y - fox.speed - (levelOne.tileSize / 2)) / levelOne.tileSize) * levelOne.columns + fox.tileX]) === 0 || levelOne.map[Math.floor((fox.y - fox.speed - (levelOne.tileSize / 2)) / levelOne.tileSize) * levelOne.columns + fox.tileX] === 'v' || levelOne.map[Math.floor((fox.y - fox.speed - (levelOne.tileSize / 2)) / levelOne.tileSize) * levelOne.columns + fox.tileX] === 'c') {
+    if (Math.floor(levelOne.map[Math.floor((fox.y - fox.speed - (levelOne.tileSize / 2)) / levelOne.tileSize) * levelOne.columns + fox.tileX]) === 0 || levelOne.map[Math.floor((fox.y - fox.speed - (levelOne.tileSize / 2)) / levelOne.tileSize) * levelOne.columns + fox.tileX] === 'v' || levelOne.map[Math.floor((fox.y - fox.speed - (levelOne.tileSize / 2)) / levelOne.tileSize) * levelOne.columns + fox.tileX] === 'c' || levelOne.map[Math.floor((fox.y - fox.speed - (levelOne.tileSize / 2)) / levelOne.tileSize) * levelOne.columns + fox.tileX] === 'd') {
       fox.y -= fox.speed;
     }
   } else if (fox.left) {
     // console.log('this is what you want'); //Math.floor(levelOne.map[testPosition * levelOne.columns + fox.tileX]));
-    if (Math.floor(levelOne.map[(fox.tileY * levelOne.columns + Math.floor((fox.x - fox.speed - (levelOne.tileSize / 2)) / levelOne.tileSize))]) === 0 || levelOne.map[(fox.tileY * levelOne.columns + Math.floor((fox.x - fox.speed - (levelOne.tileSize / 2)) / levelOne.tileSize))] === 'v' || levelOne.map[(fox.tileY * levelOne.columns + Math.floor((fox.x - fox.speed - (levelOne.tileSize / 2)) / levelOne.tileSize))] === 'c') {
+    if (Math.floor(levelOne.map[(fox.tileY * levelOne.columns + Math.floor((fox.x - fox.speed - (levelOne.tileSize / 2)) / levelOne.tileSize))]) === 0 || levelOne.map[(fox.tileY * levelOne.columns + Math.floor((fox.x - fox.speed - (levelOne.tileSize / 2)) / levelOne.tileSize))] === 'v' || levelOne.map[(fox.tileY * levelOne.columns + Math.floor((fox.x - fox.speed - (levelOne.tileSize / 2)) / levelOne.tileSize))] === 'c' || levelOne.map[(fox.tileY * levelOne.columns + Math.floor((fox.x - fox.speed - (levelOne.tileSize / 2)) / levelOne.tileSize))] === 'd') {
       fox.x -= fox.speed;
     }
   } else if (fox.down) {
-    if (Math.floor(levelOne.map[Math.floor(((fox.y + (levelOne.tileSize / 2)) + fox.speed) / levelOne.tileSize) * levelOne.columns + fox.tileX]) === 0 || levelOne.map[Math.floor(((fox.y + (levelOne.tileSize / 2)) + fox.speed) / levelOne.tileSize) * levelOne.columns + fox.tileX] === 'v' || levelOne.map[Math.floor(((fox.y + (levelOne.tileSize / 2)) + fox.speed) / levelOne.tileSize) * levelOne.columns + fox.tileX] === 'c') {
+    if (Math.floor(levelOne.map[Math.floor(((fox.y + (levelOne.tileSize / 2)) + fox.speed) / levelOne.tileSize) * levelOne.columns + fox.tileX]) === 0 || levelOne.map[Math.floor(((fox.y + (levelOne.tileSize / 2)) + fox.speed) / levelOne.tileSize) * levelOne.columns + fox.tileX] === 'v' || levelOne.map[Math.floor(((fox.y + (levelOne.tileSize / 2)) + fox.speed) / levelOne.tileSize) * levelOne.columns + fox.tileX] === 'c' || levelOne.map[Math.floor(((fox.y + (levelOne.tileSize / 2)) + fox.speed) / levelOne.tileSize) * levelOne.columns + fox.tileX] === 'd') {
       fox.y += fox.speed;
     }
   } else if (fox.right) {
-    if (Math.floor(levelOne.map[(fox.tileY * levelOne.columns + Math.floor((fox.x + fox.speed + (levelOne.tileSize / 2)) / levelOne.tileSize))]) === 0 || levelOne.map[(fox.tileY * levelOne.columns + Math.floor((fox.x + fox.speed + (levelOne.tileSize / 2)) / levelOne.tileSize))] === 'v' || levelOne.map[(fox.tileY * levelOne.columns + Math.floor((fox.x + fox.speed + (levelOne.tileSize / 2)) / levelOne.tileSize))] === 'c') {
+    if (Math.floor(levelOne.map[(fox.tileY * levelOne.columns + Math.floor((fox.x + fox.speed + (levelOne.tileSize / 2)) / levelOne.tileSize))]) === 0 || levelOne.map[(fox.tileY * levelOne.columns + Math.floor((fox.x + fox.speed + (levelOne.tileSize / 2)) / levelOne.tileSize))] === 'v' || levelOne.map[(fox.tileY * levelOne.columns + Math.floor((fox.x + fox.speed + (levelOne.tileSize / 2)) / levelOne.tileSize))] === 'c' || levelOne.map[(fox.tileY * levelOne.columns + Math.floor((fox.x + fox.speed + (levelOne.tileSize / 2)) / levelOne.tileSize))] === 'd') {
       fox.x += fox.speed;
     }
   }
