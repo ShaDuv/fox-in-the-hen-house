@@ -59,7 +59,7 @@ If you encounter any issues using this software, have comments or suggestions, o
 
 This software is license under the MIT license.
 
-Copyright (c) 2019 **by: Sam Cook,Erin Deuel, Shawna Duvall, Marina Poltorak, and Daniel Hongel**
+Copyright (c) 2019 **by: Sam Cook, Erin Deuel, Shawna Duvall, Marina Poltorak, and Daniel Hongel**
 
 ### Acknowledgments
 
